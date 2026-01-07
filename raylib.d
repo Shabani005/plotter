@@ -10,6 +10,12 @@ struct Color
     ubyte a;
 }
 
+struct Vector2
+{
+    float x;
+    float y;    
+}
+
 enum Color RED = Color(255, 0, 0, 255);
 
 extern(C):
@@ -20,3 +26,8 @@ bool WindowShouldClose();
 void BeginDrawing();
 void EndDrawing();
 void ClearBackground(Color color);
+void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color);
+Color GetColor(uint hexValue);
+Vector2 GetMouseWheelMoveV();
+
+
