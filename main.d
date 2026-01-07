@@ -1,5 +1,16 @@
-import std.stdio;
+import raylib;
 
 void main(){
-    scope(exit) writeln("Hello, World!");
+    InitWindow(800, 600, "hello from D");
+
+    while (!WindowShouldClose()){
+        BeginDrawing();
+            {
+                ClearBackground(RED);
+            }
+        EndDrawing();
+    }
+
+    CloseWindow();
 }
+
