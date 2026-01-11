@@ -1,6 +1,10 @@
 import raylib;
+import settings;
 import std.stdio;
 import std.math;
+import std.string;
+import std.conv;
+import std.format;
 
 uint WINDOW_WIDTH = 800;
 uint WINDOW_HEIGHT = 600;
@@ -10,9 +14,7 @@ float X_MAX = 10.0f;
 float Y_MIN = -5.0f;
 float Y_MAX = 5.0f;
 
-float f(float x){
-    return sin(x);
-}
+mixin(format("float f(float x){\nreturn %s;\n }\n", functionPlot));
 
 float clampX(float x, float xMin, float xMax){
     return (x - xMin) / (xMax - xMin) * WINDOW_WIDTH;
@@ -20,12 +22,6 @@ float clampX(float x, float xMin, float xMax){
 
 float clampY(float y, float yMin, float yMax){
     return WINDOW_HEIGHT - (y - yMin) / (yMax - yMin) * WINDOW_HEIGHT;
-}
-
-void tokenize(string lexemes){
-    foreach (lexeme; lexemes){
-        writeln(i"$(lexeme)");
-    }
 }
 
 void DrawAxis()
@@ -64,16 +60,15 @@ void DrawFunction()
 }
 
 int  main(string[] args){
-    if (args.length != 2){
-        stderr.writeln(i"Usage: $(args[0]) f(x)=...");
-        return 1;
-    }    
+    // if (args.length != 2){
+    //     stderr.writeln(i"Usage: $(args[0]) f(x)=...");
+    //     return 1;
+    // }    
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "hello from D function plotter");
 
     scope(exit) {
-        CloseWindow();  
-        tokenize("hello");
+        CloseWindow();   
     }
     
     while (!WindowShouldClose()){
