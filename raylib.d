@@ -17,6 +17,7 @@ struct Vector2
 }
 
 enum Color RED = Color(255, 0, 0, 255);
+enum Color GREEN = Color(0, 255, 0, 255);
 
 extern(C):
 
